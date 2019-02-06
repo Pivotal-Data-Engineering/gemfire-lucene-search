@@ -1,0 +1,6 @@
+rootProject.name = 'luceneintegration'
+include 'model'
+project(':model')
+include 'client'
+include 'queryproviders'
+
