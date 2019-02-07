@@ -6,6 +6,8 @@ public class EmployeeData  {
 
     private static final long serialVersionUID = 1L;
 
+    private String id;
+
     private String firstName;
     private String lastName;
     private int emplNumber;
@@ -18,15 +20,13 @@ public class EmployeeData  {
     public EmployeeData() {
     }
 
-    public EmployeeData(String firstName, String lastName, int emplNumber, String email, int salary,
-                        int hoursPerWeek, Collection<Contact> contacts) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emplNumber = emplNumber;
-        this.email = email;
-        this.salary = salary;
-        this.hoursPerWeek = hoursPerWeek;
-        this.contacts = contacts;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -99,8 +99,16 @@ public class EmployeeData  {
 
     @Override
     public String toString() {
-        return "EmployeeData [firstName=" + firstName + ", lastName=" + lastName + ", emplNumber="
-                + emplNumber + ", email= " + email + ", salary=" + salary + ", hoursPerWeek=" + hoursPerWeek
-                + ", contacts=" + contacts + "]";
+        return "EmployeeData{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emplNumber=" + emplNumber +
+                ", email='" + email + '\'' +
+                ", salary=" + salary +
+                ", hoursPerWeek=" + hoursPerWeek +
+                ", dob=" + dob +
+                ", contacts=" + contacts +
+                '}';
     }
 }

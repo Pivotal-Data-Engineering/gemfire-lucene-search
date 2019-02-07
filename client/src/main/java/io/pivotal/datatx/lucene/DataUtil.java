@@ -12,28 +12,26 @@ public class DataUtil {
     private static Random random = new Random();
     private static int min=10000;
     private static int max=200000;
-    private static String dateFormat = "MM-dd-yyyy";
+
 
     public static EmployeeData createRandomEmployee(){
 
-        EmployeeData customer=new EmployeeData();
-      //  customer.setId(UUID.randomUUID().toString());
-        customer.setFirstName("next-fName-"+randomChars(5 + new Random().nextInt(5)));
-        customer.setLastName("next-lName-"+randomChars(5 + new Random().nextInt(5)));
-        customer.setEmplNumber(ThreadLocalRandom.current().nextInt(min, max + 1));
-        customer.setEmail(customer.getFirstName()+"."+customer.getLastName()+"@abc.com");
-        customer.setSalary(ThreadLocalRandom.current().nextInt(50000, 150000 + 1));
-        customer.setHoursPerWeek(ThreadLocalRandom.current().nextInt(20, 39 + 1));
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
+        EmployeeData employee=new EmployeeData();
+        employee.setId(UUID.randomUUID().toString());
+        employee.setFirstName("next-fName-"+randomChars(5 + new Random().nextInt(5)));
+        employee.setLastName("next-lName-"+randomChars(5 + new Random().nextInt(5)));
+        employee.setEmplNumber(ThreadLocalRandom.current().nextInt(min, max + 1));
+        employee.setEmail(employee.getFirstName()+"."+employee.getLastName()+"@abc.com");
+        employee.setSalary(ThreadLocalRandom.current().nextInt(50000, 150000 + 1));
+        employee.setHoursPerWeek(ThreadLocalRandom.current().nextInt(20, 39 + 1));
         try {
-            Date date = simpleDateFormat.parse("12-01-2018");
-            customer.setDob(date.getTime());
+            employee.setDob(getRandomDate(1920,2018).getTime());
         }catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        return customer;
+        return employee;
 
     }
 
@@ -46,5 +44,18 @@ public class DataUtil {
         }
         String result = rtn.toString();
         return Character.toUpperCase(result.charAt(0)) + result.substring(1);
+    }
+
+    private static Date getRandomDate(int start, int end){
+        GregorianCalendar gc = new GregorianCalendar();
+        int year = randBetween(start, end);
+        gc.set(gc.YEAR, year);
+        int dayOfYear = randBetween(1, gc.getActualMaximum(gc.DAY_OF_YEAR));
+        gc.set(gc.DAY_OF_YEAR, dayOfYear);
+        return gc.getTime();
+    }
+
+    public static int randBetween(int start, int end) {
+        return start + (int)Math.round(Math.random() * (end - start));
     }
 }
