@@ -1,4 +1,4 @@
-# Geode Lucene Search Capabilities
+<h1> VMware has ended active development of this project, this repository will no longer be updated.</h1><br># Geode Lucene Search Capabilities
 
 This is a Spring boot Geode application demonstrating Lucene search capabilities
 
